@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "Brak wycieków",
+      "setup": "mkdir -p zal/build; cd zal/build; cmake ..; make -j4 zad1; chmod +x zad1",
+      "run": "zal/build/zad1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Poprawna semantyka kopiowania",
+      "setup": "mkdir -p zal/build; cd zal/build; cmake ..; make -j4 zad2; chmod +x zad2",
+      "run": "zal/build/zad2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Poprawna semantyka przenoszenia",
+      "setup": "mkdir -p zal/build; cd zal/build; cmake ..; make -j4 zad3; chmod +x zad3",
+      "run": "zal/build/zad3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    }
+  ]
+}
