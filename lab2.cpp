@@ -14,8 +14,6 @@ public:
 
     ~Wektor() { delete[] vector; }
 
-    double* vector;
-
     void dlugosc_wek() { std::cout << "Dlugosc wektora wynosi " << dlugosc << std::endl; }
 
     int getDlugosc() { return dlugosc; }
@@ -54,22 +52,17 @@ public:
         }
     }
 
+    double& operator[](int n) { return vector[n]; }
+
 private:
-    int dlugosc;
-    int pojemnosc;
+    double* vector;
+    int     dlugosc;
+    int     pojemnosc;
 };
 
 int main()
 {
     Wektor wek{4};
-    wek.dlugosc_wek();
-    wek.print();
-    std::cout << "Zmiana dlugosci wektora na mniejszy\n";
-    wek.ZmienDlugosc(3);
-    wek.dlugosc_wek();
-    wek.print();
-    std::cout << "Zmiana dlugosci wektora na wiekszy\n";
-    wek.ZmienDlugosc(5);
     wek.dlugosc_wek();
     wek.print();
 
