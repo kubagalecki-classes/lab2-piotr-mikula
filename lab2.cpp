@@ -5,8 +5,9 @@ class Wektor
 public:
     Wektor(int n_wek)
     {
-        dlugosc = n_wek;
-        vector  = new double[dlugosc];
+        dlugosc   = n_wek;
+        pojemnosc = dlugosc;
+        vector    = new double[dlugosc];
         for (int i = 0; i < dlugosc; i++)
             vector[i] = 0;
     }
@@ -18,6 +19,7 @@ public:
     void dlugosc_wek() { std::cout << "Dlugosc wektora wynosi " << dlugosc << "\n" << std::endl; }
 
     int getDlugosc() { return dlugosc; }
+    int getPojemnosc() { return pojemnosc; }
 
     void print()
     {
@@ -32,6 +34,7 @@ public:
 
 private:
     int dlugosc;
+    int pojemnosc;
 };
 
 int main()
