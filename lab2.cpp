@@ -52,7 +52,15 @@ public:
         }
     }
 
-    double& operator[](int n) { return vector[n]; }
+    double& operator[](int n)
+    {
+        if (n > dlugosc) {
+            ZmienDlugosc(n);
+            return vector[n];
+        }
+        else
+            return vector[n];
+    }
 
 private:
     double* vector;
@@ -63,16 +71,11 @@ private:
 int main()
 {
     Wektor wek{4};
-    std::cout << "Przypisanie wek[0] = 42" << std::endl;
-    wek[0] = 42;
-    std::cout << "Sprawdzenie: wek[0] = " << wek[0] << std::endl;
+    wek.dlugosc_wek();
 
-    std::cout << "\nPrzypisanie a = wek[0]" << std::endl;
-    double a = wek[0];
-    std::cout << "Sprawdzenie: a = " << a << std::endl;
-    std::cout << "a++" << std::endl;
-    a++;
-    std::cout << "Sprawdzenie: a = " << a << ", wek[0] = " << wek[0] << std::endl;
+    std::cout << "Przypisanie wartosci do elementu spoza zakresu wektora" << std::endl;
+    wek[6] = 7.5;
+    wek.dlugosc_wek();
 
     std::cout << "Ostatnia linijka kodu." << std::endl;
 }
