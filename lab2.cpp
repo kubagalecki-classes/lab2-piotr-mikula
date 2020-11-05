@@ -63,8 +63,16 @@ private:
 int main()
 {
     Wektor wek{4};
-    wek.dlugosc_wek();
-    wek.print();
+    std::cout << "Przypisanie wek[0] = 42" << std::endl;
+    wek[0] = 42;
+    std::cout << "Sprawdzenie: wek[0] = " << wek[0] << std::endl;
+
+    std::cout << "\nPrzypisanie a = wek[0]" << std::endl;
+    double a = wek[0];
+    std::cout << "Sprawdzenie: a = " << a << std::endl;
+    std::cout << "a++" << std::endl;
+    a++;
+    std::cout << "Sprawdzenie: a = " << a << ", wek[0] = " << wek[0] << std::endl;
 
     std::cout << "Ostatnia linijka kodu." << std::endl;
 }
