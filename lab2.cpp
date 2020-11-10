@@ -3,10 +3,10 @@
 struct Liczba
 {
     Liczba(int w) : wartosc{w} {}
-    Liczba(const Liczba& l) : wartosc{l.wartosc}
+    /*Liczba(const Liczba& l) : wartosc{l.wartosc}
     {
         std::cout << "Utworzono konstruktor kopiujacy\n";
-    }
+    }*/
 
     int wartosc;
 };
@@ -20,3 +20,4 @@ int main()
     std::cout << "Krok 3" << std::endl;
     Liczba c = a;
 }
+//kod się kompiluje
