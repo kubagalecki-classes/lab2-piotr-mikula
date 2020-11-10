@@ -1,25 +1,20 @@
 #pragma once
 
 #include "Resource.hpp"
-#include <iostream>
 
 class ResourceManager
 {
     public:
-
     //konstruktor domyslny
     ResourceManager(){rm = new Resource;}
-
     //destruktor
     ~ResourceManager(){delete rm;}
-
     //konstruktor kopiujacy
     ResourceManager(const ResourceManager& crm)
     {
       rm = new Resource;
       *rm = crm.rm;
     }
-
     //konstruktor przenoszenia
     ResourceManager(ResourceManager&& mrm)
     {
@@ -28,11 +23,14 @@ class ResourceManager
     }
 
     //operator przypisania
-    ResourceManager& operator=(const ResourceManager& mrm)
+    ResourceManager& operator=(ResourceManager& mrm)
     {
-      if(!(rm == nullptr)) delete rm;
-      rm = new Resource;
-      *rm = mrm.rm;
+      if(this != &mrm) 
+      {
+        delete rm;
+        rm = mrm.rm;
+        mrm.rm = nullptr;
+      }
       return *this;
     }
 
