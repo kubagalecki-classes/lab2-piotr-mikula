@@ -14,7 +14,7 @@ TEST_CASE("Move semantics", "[]")
         ResourceManager rm3;
         rm3 = std::move(rm2);
         REQUIRE(ConstructionTracker::live == 1);
-        REQUIRE(rm1.get() == rm3.get());
+        REQUIRE(getv == rm3.get());
     }
     REQUIRE(ConstructionTracker::live == 0);
 }

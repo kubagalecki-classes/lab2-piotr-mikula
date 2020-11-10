@@ -3,13 +3,24 @@
 class Wektor
 {
 public:
-    Wektor(int n_wek)
+    Wektor(int n_wek) : dlugosc(n_wek), pojemnosc(dlugosc)
     {
-        dlugosc   = n_wek;
-        pojemnosc = n_wek;
-        vector    = new double[dlugosc];
+        vector = new double[dlugosc];
         for (int i = 0; i < dlugosc; i++)
             vector[i] = 0;
+    }
+
+    Wektor(const Wektor& vct) : dlugosc(vct.getDlugosc()), pojemnosc(dlugosc)
+    {
+        std::cout << "Stworzono konstruktor kopiujacy\n";
+        vector = new double[dlugosc];
+        vector = vct.vector;
+    }
+
+    Wektor(Wektor&& vct)
+    {
+        *this      = std::move(vct);
+        vct.vector = nullptr;
     }
 
     ~Wektor() { delete[] vector; }
@@ -17,7 +28,10 @@ public:
     void dlugosc_wek() { std::cout << "Dlugosc wektora wynosi " << dlugosc << std::endl; }
 
     int getDlugosc() { return dlugosc; }
+    int getDlugosc() const { return dlugosc; }
+
     int getPojemnosc() { return pojemnosc; }
+    int getPojemnosc() const { return pojemnosc; }
 
     void print()
     {
@@ -62,6 +76,8 @@ public:
             return vector[n];
     }
 
+    Wektor& operator=(const Wektor& wek) { return *this; }
+
 private:
     double* vector;
     int     dlugosc;
@@ -72,10 +88,17 @@ int main()
 {
     Wektor wek{4};
     wek.dlugosc_wek();
+    wek[0] = 3;
+    wek[2] = 1;
+    wek.print();
 
-    std::cout << "Przypisanie wartosci do elementu spoza zakresu wektora" << std::endl;
-    wek[6] = 7.5;
-    wek.dlugosc_wek();
+    Wektor wek2{wek};
+    wek2.dlugosc_wek();
+    wek2.print();
+
+    Wektor wek3 = wek;
+    wek3.dlugosc_wek();
+    wek3.print();
 
     std::cout << "Ostatnia linijka kodu." << std::endl;
 }
