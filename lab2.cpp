@@ -3,11 +3,9 @@
 class Wektor
 {
 public:
-    Wektor(int n_wek)
+    Wektor(int n_wek) : dlugosc(n_wek), pojemnosc(dlugosc)
     {
-        dlugosc   = n_wek;
-        pojemnosc = n_wek;
-        vector    = new double[dlugosc];
+        vector = new double[dlugosc];
         for (int i = 0; i < dlugosc; i++)
             vector[i] = 0;
     }
@@ -68,32 +66,10 @@ private:
     int     pojemnosc;
 };
 
-struct Kokardka
-{
-    Kokardka() { dlugosc = 42; }
-    Kokardka(int d) { dlugosc = d; }
-
-    int dlugosc;
-};
-
-struct Prezent
-{
-    Prezent(int dk)
-    {
-        std::cout << k.dlugosc << " " << dk << std::endl;
-        k.dlugosc = dk;
-    }
-
-    Kokardka k;
-    // Inne pola ...
-};
-
 int main()
 {
     Wektor wek{4};
     wek.dlugosc_wek();
-
-    Prezent gift{2};
 
     std::cout << "Ostatnia linijka kodu." << std::endl;
 }
